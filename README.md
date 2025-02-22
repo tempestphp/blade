@@ -1,7 +1,5 @@
 # Blade
 
-[![Latest Stable Version](http://img.shields.io/github/release/jenssegers/blade.svg)](https://packagist.org/packages/jenssegers/blade) [![Coverage Status](http://img.shields.io/coveralls/jenssegers/blade.svg)](https://coveralls.io/r/jenssegers/blade)
-
 PHP 8.4 compatible fork of jenssegers/blade: a standalone version of Laravel's Blade templating engine for use outside of Laravel.
 
 ## Installation
