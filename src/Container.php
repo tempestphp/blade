@@ -9,6 +9,13 @@ class Container extends BaseContainer
 {
     protected array $terminatingCallbacks = [];
 
+    public function registerInstance(): self
+    {
+        self::$instance = $this;
+        
+        return $this;
+    }
+
     public function terminating(Closure $callback)
     {
         $this->terminatingCallbacks[] = $callback;

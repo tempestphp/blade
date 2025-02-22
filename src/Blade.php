@@ -14,29 +14,20 @@ use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\View\Factory;
 use Illuminate\View\ViewServiceProvider;
 
-class Blade implements FactoryContract
+final class Blade implements FactoryContract
 {
-    /**
-     * @var Application
-     */
-    protected $container;
+    protected ContainerInterface|Application $container;
 
-    /**
-     * @var Factory
-     */
-    private $factory;
+    private Factory $factory;
 
-    /**
-     * @var BladeCompiler
-     */
-    private $compiler;
+    private BladeCompiler $compiler;
 
-    public function __construct($viewPaths, string $cachePath, ContainerInterface $container = null)
+    public function __construct($viewPaths, string $cachePath, ?ContainerInterface $container = null)
     {
         $this->container = $container ?: new Container;
 
         $this->setupContainer((array) $viewPaths, $cachePath);
-        (new ViewServiceProvider($this->container))->register();
+        new ViewServiceProvider($this->container)->register();
 
         $this->factory = $this->container->get('view');
         $this->compiler = $this->container->get('blade.compiler');
@@ -57,12 +48,12 @@ class Blade implements FactoryContract
         return $this->compiler;
     }
 
-    public function directive(string $name, callable $handler)
+    public function directive(string $name, callable $handler): void
     {
         $this->compiler->directive($name, $handler);
     }
 
-    public function if($name, callable $callback)
+    public function if($name, callable $callback): void
     {
         $this->compiler->if($name, $callback);
     }
@@ -77,7 +68,7 @@ class Blade implements FactoryContract
         return $this->factory->file($path, $data, $mergeData);
     }
 
-    public function share($key, $value = null)
+    public function share($key, $value = null): mixed
     {
         return $this->factory->share($key, $value);
     }
@@ -106,13 +97,15 @@ class Blade implements FactoryContract
         return $this;
     }
 
-    public function __call(string $method, array $params)
+    public function __call(string $method, array $params): mixed
     {
         return call_user_func_array([$this->factory, $method], $params);
     }
 
-    protected function setupContainer(array $viewPaths, string $cachePath)
+    protected function setupContainer(array $viewPaths, string $cachePath): void
     {
+        $this->container->registerInstance();
+
         $this->container->bindIf('files', fn () => new Filesystem);
         $this->container->bindIf('events', fn () => new Dispatcher);
         $this->container->bindIf('config', fn () => new Repository([
