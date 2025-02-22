@@ -1,18 +1,22 @@
 {
-    "name": "jenssegers/blade",
-    "description": "The standalone version of Laravel's Blade templating engine for use outside of Laravel.",
-    "keywords": ["laravel", "blade", "template", "view", "render"],
+    "name": "tempest/blade",
+    "description": "PHP 8.4 compatible fork of jenssegers/blade: a standalone version of Laravel's Blade templating engine for use outside of Laravel.",
+    "keywords": ["laravel", "blade", "template", "view", "render", "tempest"],
     "license" : "MIT",
     "authors": [
+        {
+            "name": "Brent Roose",
+            "homepage": "https://tempestphp.com"
+        },
         {
             "name": "Jens Segers",
             "homepage": "https://jenssegers.com"
         }
     ],
     "require": {
-        "php": ">=8.1",
-        "illuminate/view": "^9.0|^10.0|^11.0",
-        "illuminate/config": "^9.0|^10.0|^11.0"
+        "php": ">=8.4",
+        "illuminate/view": "^11.0",
+        "illuminate/config": "^11.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.0",
@@ -20,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Jenssegers\\Blade\\": "src/"
+            "Tempest\\Blade\\": "src/"
         }
     },
     "minimum-stability": "dev",

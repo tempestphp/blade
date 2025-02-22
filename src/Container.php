@@ -1,6 +1,6 @@
 <?php
 
-namespace Jenssegers\Blade;
+namespace Tempest\Blade;
 
 use Closure;
 use Illuminate\Container\Container as BaseContainer;
