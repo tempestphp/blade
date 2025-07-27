@@ -15,8 +15,8 @@
     ],
     "require": {
         "php": ">=8.4",
-        "illuminate/config": "^11.0",
-        "illuminate/view": "^11.0",
+        "illuminate/config": "^11.34",
+        "illuminate/view": "^11.34",
         "illuminate/support": "^11.34"
     },
     "require-dev": {
