@@ -15,13 +15,19 @@
     ],
     "require": {
         "php": ">=8.4",
-        "illuminate/view": "^11.0",
-        "illuminate/config": "^11.0"
+        "illuminate/config": "^11.34",
+        "illuminate/collections": "^11.34",
+        "illuminate/conditionable": "^11.34",
+        "illuminate/container": "^11.34",
+        "illuminate/contracts": "^11.34",
+        "illuminate/events": "^11.34",
+        "illuminate/view": "^11.34",
+        "illuminate/support": "^11.34"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10.0",
+        "phpunit/phpunit": "^11.2.7",
         "laravel/pint": "^1.13",
-        "tempest/debug": "^1.0@alpha"
+        "tempest/debug": "^1.0"
     },
     "autoload": {
         "psr-4": {
